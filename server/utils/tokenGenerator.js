@@ -4,7 +4,7 @@ import jwt from "jsonwebtoken";
 export const generateToken = (userId, res) => {
   try {
     // Sign payload with secret key
-    const token = jwt.sign({ id: userId }, process.env.SECRET);
+    const token = jwt.sign({ id: userId }, process.env.JWT_SECRET);
 
     // Set the token in a cookie
     res.cookie("AuthToken", token, {

@@ -38,7 +38,7 @@ const Login = () => {
   // Retrun Loading component if loading is true
   if (loading) {
     return (
-      <div className="h-screen w-full top-0">
+      <div className="h-screen w-full">
         <LoadingCircle />
       </div>
     );
