@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // CORS configuration options
 const corsOptions = {
-  origin: ["http://localhost:3000", "https://blogmasterofficial.netlify.app"],
+  origin: ["http://localhost:3000", "https://linkidea.netlify.app"],
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
