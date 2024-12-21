@@ -1,4 +1,3 @@
-import axios from "axios";
 import { useState } from "react";
 import toast from "react-hot-toast";
 
@@ -11,23 +10,31 @@ const useAuth = (url, inputs) => {
   const fetchData = async () => {
     try {
       setLoading(true);
-      const res = await axios.post(url, inputs, { withCredentials: true });
+      const res = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Credentials': 'include'
+        },
+        body: JSON.stringify(inputs)
+      });
+      const data = await res.json();
       
-      if (res.data.success) {
-        setResponse(res.data);
-        toast.success(res.data.message);
+      if (data.success) {
+        setResponse(data);
+        toast.success(data.message);
         setLoading(false);
       } else {
-        setError(res.data.message);
-        toast.error(res.data.message);
+        setError(data.message);
+        toast.error(data.message);
         setLoading(false);
       }
     } catch (error) {
       console.log(error);
-      if (error.code === "ERR_NETWORK") {
+      if (error.message === "Failed to fetch") {
         toast.error("Network error. Please check your connection.");
       } else {
-        toast.error(error.response ? error.response.data.message : error.message);
+        toast.error(error.message);
       }
       setLoading(false);
     }
