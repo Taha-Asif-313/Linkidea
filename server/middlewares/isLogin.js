@@ -8,7 +8,7 @@ const isLogin = (req, res, next) => {
   }
 
   try {
-    const decoded = jwt.verify(token, process.env.SECRET);
+    const decoded = jwt.verify(token, "Taha1233-----313-----------Pak------------muslim----------------");
     req.user = decoded;
     next();
   } catch (error) {
