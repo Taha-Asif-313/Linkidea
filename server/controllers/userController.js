@@ -16,7 +16,7 @@ export const register = async (req, res) => {
     if (isUsername) {
       return res.status(400).json({
         success: false,
-        message: "Username already exists!",
+        message: "Try different username!",
       });
     }
 
@@ -112,6 +112,7 @@ export const login = async (req, res) => {
     return res.status(400).json({
       success: false,
       message: "internal server error !",
+      error: error,
     });
   }
 };
