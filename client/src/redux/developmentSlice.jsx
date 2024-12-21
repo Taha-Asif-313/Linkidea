@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 export const developmentSlice = createSlice({
   name: "development",
   initialState: {
-    baseApiUrl: "http://localhost:5000",
+    baseApiUrl: "https://linkidea-server.vercel.app",
   },
   reducers: {},
 });

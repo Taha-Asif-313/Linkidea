@@ -73,12 +73,10 @@ export const register = async (req, res) => {
 export const login = async (req, res) => {
   try {
     // Get data
-    const { username, email, password } = req.body;
+    const { email, password } = req.body;
 
     // Find User by email or username
-    const user = username
-      ? await User.findOne({ username: username })
-      : await User.findOne({ email: email });
+    const user = await User.findOne({ email: email });
 
     // Email matching
     if (!user) {
@@ -218,41 +216,34 @@ export const updateUserData = async (req, res) => {
     const { username, gender, profilePic } = req.body;
 
     // Find user by id and update the data
+    const user = await User.findById(userId);
     if (username) {
       const isUsername = await User.findOne({ username: username });
-      if (isUsername) {
-        const user = await User.findByIdAndUpdate(userId, {
-          username: username,
-        });
-        await user.save();
-      } else {
-        // Response
-        return res.status(201).json({
+      if (isUsername && isUsername._id.toString() !== userId) {
+        return res.status(400).json({
           success: false,
           message: "Username is already exist!",
         });
       }
+      user.username = username;
     }
-    if (username) {
-      const user = await User.findByIdAndUpdate(userId, { gender: gender });
-      await user.save();
+    if (gender) {
+      user.gender = gender;
     }
-    if (username) {
-      const user = await User.findByIdAndUpdate(userId, {
-        profilePic: profilePic,
-      });
-      await user.save();
+    if (profilePic) {
+      user.profilePic = profilePic;
     }
+    await user.save();
 
     // Response
-    return res.status(201).json({
+    return res.status(200).json({
       success: true,
       message: "Update successfully!",
     });
   } catch (error) {
-    return res.status(400).json({
+    return res.status(500).json({
       success: false,
-      message: "internal server error",
+      message: "Internal server error",
     });
   }
 };
@@ -264,24 +255,24 @@ export const deleteUser = async (req, res) => {
     const userId = req.user.id;
     // Find user for delete by id
     const deletedUser = await User.findById(userId);
-    if (deleteUser) {
-      await PostModel.deleteMany(deleteUser.blogs);
-      await User.deleteOne(deletedUser);
-      return res.status(201).json({
+    if (deletedUser) {
+      await PostModel.deleteMany({ _id: { $in: deletedUser.blogs } });
+      await User.deleteOne({ _id: userId });
+      return res.status(200).json({
         success: true,
-        message: "deleted successfully!",
+        message: "Deleted successfully!",
       });
     } else {
       return res.status(400).json({
         success: false,
-        message: "failed to delete!",
+        message: "Failed to delete!",
       });
     }
   } catch (error) {
     console.log(error);
-    return res.status(400).json({
+    return res.status(500).json({
       success: false,
-      message: "internal server error",
+      message: "Internal server error",
     });
   }
 };
