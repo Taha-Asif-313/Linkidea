@@ -16,17 +16,41 @@ const Login = () => {
     email: "",
     password: "",
   });
+  const [response, setResponse] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
 
   // Handle change function
   const handleChange = (e) => {
     setinputs({ ...inputs, [e.target.name]: e.target.value });
   };
 
-  // Sumbit Data to backend
-  const { response, loading, error, fetchData } = useAuth(
-    `https://linkidea-server.vercel.app/api/user/login`,
-    inputs
-  );
+  const fetchData = async () => {
+    try {
+      setLoading(true);
+      const res = await axios.post(`https://linkidea-server.vercel.app/api/user/login`, inputs, { withCredentials: true });
+      
+      if (res.data.success) {
+        setResponse(res.data);
+        toast.success(res.data.message);
+        setLoading(false);
+      } else {
+        setError(res.data.message);
+        toast.error(res.data.message);
+        setLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
+      if (error.code === "ERR_NETWORK") {
+        toast.error("Network error. Please check your connection.");
+      } else {
+        toast.error(error.response ? error.response.data.message : error.message);
+      }
+      setLoading(false);
+    }
+  };
+
 
   // if success
   if (response.success) {
