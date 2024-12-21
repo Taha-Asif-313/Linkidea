@@ -104,7 +104,7 @@ const Header = () => {
                   {userData && (
                     <>
                       <img className="w-8" src={userData.profilePic} alt="" />
-                      <div className="flex flex-col">
+                      <div className="flex flex-col max-lg:hidden">
                         <span className="text-[8px]">@{userData.username}</span>
                         <span className="lg:text-sm text-[12px]">
                           {userData.fullname}
@@ -117,7 +117,7 @@ const Header = () => {
                   onClick={() => {
                     setshowLogoutBox(true);
                   }}
-                  className="text-2xl cursor-pointer ml-4 max-lg:hidden"
+                  className="text-2xl cursor-pointer ml-4 "
                 />
               </div>
             ) : (

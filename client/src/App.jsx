@@ -30,7 +30,12 @@ const App = () => {
           />
         </Routes>
         <Footer />
-        <Toaster />
+        <Toaster 
+          toastOptions={{
+            className: 'text-black text-sm',
+           
+          }}
+        />
       </div>
     </>
   );

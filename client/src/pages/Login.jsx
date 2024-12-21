@@ -25,7 +25,7 @@ const Login = () => {
   
   // Sumbit Data to backend
   const { response, loading, error, fetchData } = useAuth(
-    `https://linkidea-server.vercel.app/api/user/login`,
+    `${apiBaseUrl}/api/user/login`,
     inputs
   );
 
@@ -39,9 +39,9 @@ const Login = () => {
   // Retrun Loading component if loading is true
   if (loading) {
     return (
-      <div className="h-screen">
+  
         <LoadingCircle />
-      </div>
+      
     );
   }
   
