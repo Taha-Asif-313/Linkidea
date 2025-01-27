@@ -23,8 +23,11 @@ export const getAllPosts = async (req, res) => {
 // Create post
 export const createpost = async (req, res) => {
   try {
-    const { title, content, thumnail } = req.body; // Assuming file is Base64-encoded
+    const { title, content } = req.body; // Assuming file is Base64-encoded
     const userId = req.user.id;
+    const thumbnail = req.file; // File information from multer
+    console.log(thumbnail);
+
 
     // Validate required fields
     if (!title || !content) {
@@ -58,7 +61,7 @@ export const createpost = async (req, res) => {
       likes:0,
       views:0,
       comments:[],
-      thumnail: thumnail, // Set the path to the saved file
+      thumnail: `http://localhost:5000/uploads/${thumbnail.originalname}`, // Save the filename
       user: user._id,
       username: user.username,
     });
@@ -82,7 +85,6 @@ export const createpost = async (req, res) => {
   }
 };
 
-// Get singal post to read
 export const getPostData = async (req, res) => {
   try {
     const postId = req.params.id;

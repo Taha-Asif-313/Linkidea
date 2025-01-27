@@ -18,6 +18,8 @@ const PostCard = ({
   comments,
   Delete,
 }) => {
+
+  let stcontent = content.slice(0, 80) + "...";
   // States
   const [loading, setloading] = useState(false);
 
@@ -43,7 +45,7 @@ const PostCard = ({
 
   if (loading) {
     return (
-      <div className="mt-10 bg-black h-screen w-full absolute top-0 left-0">
+      <div className="mt-10 bg-black h-screen max-w-[380px] absolute top-0 left-0">
         <LoadingCircle />
       </div>
     );
@@ -51,17 +53,17 @@ const PostCard = ({
 
   return (
     // BlogCard Component
-    <Link className="md:w-[30%] w-full" to={`/view-post/${postId}`}>
-      <div class="bg-white mb-2 w-full h-[250px] cursor-pointer rounded-lg overflow-hidden group relative before:absolute before:inset-0 before:z-10 before:bg-black before:opacity-80">
+    <Link className="lg:w-[30%] md:w-[50%] w-full" to={`/view-post/${postId}`}>
+      <div class="mb-2 w-full h-[250px] cursor-pointer rounded-lg overflow-hidden group relative before:absolute before:inset-0 before:z-10 before:bg-black before:opacity-80">
         <img
           src={thumnail ? thumnail : "/default-thum.png"}
           alt="Blog Post 1"
           class="w-full h-full object-cover object-center group-hover:scale-110 transition-all duration-300"
         />
-        <div class="p-6 absolute bottom-0 left-0 right-0 z-20">
-          <h3 class="text-xl font-bold text-primary">{title}</h3>
+        <div class="md:p-6 px-3 py-4 absolute bottom-0 left-0 right-0 z-20">
+          <h3 class="text-xl font-bold text-transparent bg-gradient-custom bg-clip-text">{title}</h3>
           <div class="">
-            <p class="text-gray-200 lg:text-sm text-[13px] ">{content}</p>
+            <p class="text-gray-200 lg:text-sm text-[13px] ">{stcontent}</p>
           </div>
           <div className="flex w-full justify-between items-center">
             <div className="flex items-center mt-4 z-10">

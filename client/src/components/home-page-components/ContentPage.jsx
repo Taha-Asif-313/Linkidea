@@ -9,7 +9,7 @@ const ContentPage = () => {
       <div class="w-full px-3 mx-auto">
         <div class="grid md:grid-cols-2 gap-12">
           <div class="text-left">
-            <h2 class="bg-clip-text bg-gradient-green-black text-transparent text-3xl font-bold mb-4">
+            <h2 class="text-black text-3xl font-bold mb-4">
               Share Your Ideas
             </h2>
             <p class="mb-4 text-sm text-gray-500">
@@ -41,7 +41,7 @@ const ContentPage = () => {
             />
           </div>
           <div class="text-left">
-            <h2 class="text-transparent bg-gradient-green-black bg-clip-text text-3xl font-bold mb-4">
+            <h2 class="text-black text-3xl font-bold mb-4">
               Unlock Your Potential
             </h2>
             <p class="mb-4 text-sm text-gray-500">

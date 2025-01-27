@@ -7,7 +7,7 @@ const Benifits = () => {
   return (
     <>
       {/* information about this website some features and benifits */}
-      <div class="bg-[#d6ffd7] mt-32 ">
+      <div class="bg-green-50 mt-32 ">
         <div class="w-full px-5 md:px-10 py-16 mx-auto max-w-screen-2xl">
           <h2 class="text-gray-800 text-3xl md:text-4xl font-extrabold text-center mb-16">
             Discover Our Exclusive Benefits

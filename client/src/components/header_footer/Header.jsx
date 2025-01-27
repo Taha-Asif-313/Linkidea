@@ -30,12 +30,12 @@ const Header = () => {
   return (
     <>
       <LogoutBox Show={showLogoutBox} setShow={setshowLogoutBox} />
-      <header className="flex shadow-md px-4 sm:px-10 bg-white max-h-[55px] tracking-wide relative z-50">
+      <header className="flex mx-auto max-lg:px-5 max-w-[1300px] absolute w-full px-5 bg-black max-h-[55px] tracking-wide z-50">
         <div className="flex items-center justify-between gap-5 w-full">
-          <Link className="lg:w-[30%] w-[50%] flex items-end py-4" to={"/"}>
+          <Link to={"/"} className="lg:w-[30%] w-[50%] flex items-center py-4" >
             <img src="/logo.png" alt="logo" className="w-10" />
-            <span className="text-sm -ml-1">
-              Link<span className="text-primary">ideas</span>
+            <span className="text-lg font-bold">
+              Link<span className="text-primary">idea</span>
             </span>
           </Link>
           <div
@@ -53,7 +53,7 @@ const Header = () => {
             >
               <IoClose className="text-2xl" />
             </button>
-            <ul className="lg:flex justify-center max-lg:justify-start gap-x-2 max-lg:space-y-3 max-lg:fixed max-lg:bg-green-50 max-lg:w-1/2 max-lg:min-w-[200px] max-lg:top-0 max-lg:left-0 max-lg:py-4 max-lg:px-5 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50">
+            {/* <ul className="lg:flex justify-center max-lg:justify-start gap-x-2 max-lg:space-y-3 max-lg:fixed max-lg:bg-green-50 max-lg:w-1/2 max-lg:min-w-[200px] max-lg:top-0 max-lg:left-0 max-lg:py-4 max-lg:px-5 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50">
               <li className="px-2 mb-10 hidden max-lg:block">
                 <Link className="lg:w-[30%] w-[50%] flex items-end" to={"/"}>
                   <img src="/logo.png" alt="logo" className="w-10" />
@@ -94,7 +94,7 @@ const Header = () => {
                       </li>
                     );
                   })}
-            </ul>
+            </ul> */}
           </div>
 
           <div className="flex w-[50%] lg:w-[30%] justify-end space-x-4">
@@ -104,7 +104,7 @@ const Header = () => {
                   {userData && (
                     <>
                       <img className="w-8" src={userData.profilePic} alt="" />
-                      <div className="flex flex-col max-lg:hidden">
+                      <div className="flex text-white flex-col max-lg:hidden">
                         <span className="text-[8px]">@{userData.username}</span>
                         <span className="lg:text-sm text-[12px]">
                           {userData.fullname}
@@ -117,27 +117,31 @@ const Header = () => {
                   onClick={() => {
                     setshowLogoutBox(true);
                   }}
-                  className="text-2xl cursor-pointer ml-4 "
+                  className="text-2xl cursor-pointer ml-4 text-white"
                 />
               </div>
             ) : (
               <>
                 <Link
                   to={"/register"}
-                  className="text-center hidden md:block px-4 py-2 w-[100%] md:w-[30%] text-[12px] rounded-md text-white bg-primary transition-all ease-in-out duration-300 hover:text-primary hover:bg-black"
+                  className=""
                 >
-                  Get Started
+                    <button className="text-center max-lg:hidden px-8 font-medium py-2 w-[100%] text-[12px] rounded-full text-white bg-gradient-custom">
+                    Start Sharing
+                  </button>
                 </Link>
                 <Link
                   to={"/login"}
-                  className="text-center px-4 py-2  w-[100%] md:w-[20%] text-[12px] rounded-md text-white bg-primary transition-all ease-in-out duration-300 hover:text-primary hover:bg-black"
+                  className=""
                 >
-                  Login
+                  <button className="text-center px-8 font-medium py-2 w-[100%] text-[12px] rounded-full text-white bg-gradient-custom">
+                    Login
+                  </button>
                 </Link>
               </>
             )}
 
-            <button
+            {/* <button
               id="toggleOpen"
               className="lg:hidden"
               onClick={() => {
@@ -145,7 +149,7 @@ const Header = () => {
               }}
             >
               <CiMenuFries className="text-2xl" />
-            </button>
+            </button> */}
           </div>
         </div>
       </header>

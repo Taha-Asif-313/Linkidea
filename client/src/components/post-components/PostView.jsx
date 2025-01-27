@@ -57,9 +57,12 @@ const PostView = ({
     },
   ];
 
+  // Function to handle share
   const handleShare = (url) => {
     window.open(url, "_blank", "noopener,noreferrer");
   };
+
+  // Function to handle web share
   const handleWebShare = async () => {
     if (navigator.share) {
       try {
@@ -67,7 +70,7 @@ const PostView = ({
           title: title,
           url: pageUrl,
         });
-        alert("Shared successfully!");
+       
       } catch (error) {
         alert("Sharing failed.");
       }
@@ -75,6 +78,8 @@ const PostView = ({
       alert("Web Share API is not supported on this device.");
     }
   };
+
+  // Function to handle like
   const handleLike = async () => {
     try {
       await axios
@@ -101,11 +106,11 @@ const PostView = ({
         Show={showAddComment}
         setShow={setshowAddComment}
       />
-      <div className="flex max-h-screen h-screen justify-between gap-5 mt-5 flex-col lg:flex-row lg:mx-24 mx-5 ">
+      <div className="flex max-h-screen text-white h-screen justify-between gap-5 pt-20 flex-col lg:flex-row lg:mx-24 mx-5 ">
         {/* Left side a post details */}
-        <div className="md:w-[70%] w-full max-h-screen">
+        <div className="md:w-[100%] lg:flex gap-5 w-full max-h-screen">
           {/* Post Display Section */}
-          <div className="flex w-full flex-col gap-2 md:max-h-[70%] overflow-y-auto">
+          <div className="flex lg:w-[50%] w-full flex-col gap-2 md:max-h-[70%] overflow-y-auto">
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-2">
                 <img
@@ -125,13 +130,20 @@ const PostView = ({
               <div className="flex gap-2 items-center">
                 <button
                   onClick={handleLike}
-                  className="flex gap-1 items-center rounded text-3xl text-primary"
+                  className="flex gap-1 items-center rounded text-2xl text-primary"
                 >
                   {liked ? (
                     <IoIosHeart className="animate-pop" />
                   ) : (
                     <IoIosHeartEmpty />
                   )}
+                </button>
+                <button
+                  className="flex text-xl text-primary gap-1 items-center p-2 rounded-md"
+                  onClick={handleWebShare}
+                >
+                  {" "}
+                  <IoShareSocial />
                 </button>
                 <button
                   onClick={() => {
@@ -144,22 +156,22 @@ const PostView = ({
                 </button>
               </div>
             </div>
-            <div class="max-w-5xl bg-gray-100 p-5 rounded overflow-hidden">
+            <div class="max-w-5xl  overflow-hidden">
               <img
                 src={thumnail ? thumnail : "/default-thum.png"}
                 alt="Post 1"
-                class="w-full md:h-64 mb-5 object-cover object-center group-hover:scale-110 transition-all duration-300"
+                class="w-full rounded-lg md:h-64 mb-5 object-cover object-center group-hover:scale-110 transition-all duration-300"
               />
               <div>
-                <h2 class="text-gray-800 text-2xl font-bold mb-4">{title}</h2>
-                <p class="text-gray-600 leading-relaxed text-sm">{content}</p>
+                <h2 class="text-2xl font-bold mb-4">{title}</h2>
+                <p class=" leading-relaxed text-sm">{content}</p>
               </div>
             </div>
           </div>
 
           {/* Comments display section */}
-          <div class="w-full max-h-[30%] h-[30%] overflow-y-scroll bg-gray-100 rounded border-t-2 border-gray-500 px-5 md:px-5">
-            <h3 class="font-semibold my-2">Comments</h3>
+          <div class="w-full lg:w-[50%] max-h-screen lg:h-screen overflow-y-auto border-primary text-white">
+            <h3 class="font-semibold my-2 lg:text-lg">Comments</h3>
             <div class="flex flex-col gap-5 ">
               {comments.map((comment) => (
                 <CommentCard
@@ -173,7 +185,7 @@ const PostView = ({
         </div>
 
         {/* Share Features and other features soon on right side */}
-        <div className="md:border-l border-gray-400 md:w-[25%] p-5">
+        {/* <div className="md:border-l border-gray-400 md:w-[25%] p-5">
           <button
             className="flex bg-primary text-sm text-white gap-1 items-center p-2 rounded-md"
             onClick={handleWebShare}
@@ -194,7 +206,7 @@ const PostView = ({
               </button>
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );

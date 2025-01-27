@@ -48,17 +48,14 @@ const Login = () => {
 
   return (
     <>
-      <div className="min-h-[520px] flex justify-center items-center bg-white">
-        <div className="p-10 border-[1px] border-slate-200 rounded-md flex flex-col items-center space-y-3">
-          <div className="py-8 flex items-center justify-center">
-            <img className="-mt-10 w-16" src="/logo.png" alt="Logo" />
-            <span className="text-lg -ml-4">
-              Link<span className="text-primary">ideas</span>
-            </span>
+      <div className="h-screen max-lg:h-screen flex justify-center items-center">
+        <div className="py-10 px-8 md:border-[1px] border-slate-200 rounded-md flex flex-col items-center space-y-3">
+          <div className="flex items-center justify-center">
+            <img className="w-16" src="/logo.png" alt="Logo" />
           </div>
-          <form>
+          <form className="text-white">
             <input
-              className="p-2 mb-3 text-sm border-primary border-[1px] bg-transparent rounded-sm w-80"
+              className="px-4 py-2 mb-3 text-sm border-primary border-[1px] bg-transparent rounded-full w-80"
               placeholder="E-Mail"
               name="email"
               value={inputs.email}
@@ -66,7 +63,7 @@ const Login = () => {
             />
             <div className="flex flex-col space-y-1">
               <input
-                className="p-2 text-sm border-[1px] border-primary bg-transparent rounded-sm w-80"
+                className="py-2 px-4 text-sm border-[1px] border-primary bg-transparent rounded-full w-80"
                 placeholder="Password"
                 name="password"
                 type="password"
@@ -75,7 +72,7 @@ const Login = () => {
               />
               <a
                 href="/forgot-password"
-                className="font-medium text-sm text-primary"
+                className="font-medium text-[12px] text-primary"
               >
                 Forgot password?
               </a>
@@ -85,12 +82,12 @@ const Login = () => {
           <div className="flex flex-col space-y-5 w-full">
             <button
               onClick={fetchData}
-              className="w-full bg-primary border-2 border-primary rounded-full py-2 text-sm text-white transition-all duration-200 hover:bg-transparent hover:text-primary"
+              className="w-full bg-gradient-custom rounded-full py-2 text-sm text-white transition-all duration-200"
             >
               Log in
             </button>
-            <div className="flex items-center justify-center border-t-[1px] border-t-slate-300 w-full relative">
-              <div className="-mt-1 text-sm font-bod bg-white px-5 absolute">
+            <div className="flex items-center justify-center w-full relative">
+              <div className="-mt-1 text-sm font-bold text-white px-5 absolute">
                 Or
               </div>
             </div>

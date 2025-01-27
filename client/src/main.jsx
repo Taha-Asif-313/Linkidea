@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <React.StrictMode>
       <BrowserRouter>
-        <div className="bg-white relative text-black min-h-screen w-full overflow-x-hidden">
+        <div className="bg-black text-white h-screen max-w-full overflow-x-auto">
           <App />
         </div>
       </BrowserRouter>
