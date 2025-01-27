@@ -61,7 +61,7 @@ export const createpost = async (req, res) => {
       likes:0,
       views:0,
       comments:[],
-      thumnail: `http://localhost:5000/uploads/${thumbnail.originalname}`, // Save the filename
+      thumnail: `https://linkidea-server.vercel.app/uploads/${thumbnail.originalname}`, // Save the filename
       user: user._id,
       username: user.username,
     });
