@@ -54,7 +54,7 @@ const PostCard = ({
   return (
     // BlogCard Component
     <Link className="lg:w-[30%] md:w-[50%] w-full " to={`/view-post/${postId}`}>
-      <div class="mb-2 w-full h-[250px] border border-zinc-900 cursor-pointer rounded-lg overflow-hidden group relative before:absolute before:inset-0 before:z-10 before:bg-black before:opacity-60">
+      <div class="mb-2 w-full h-[250px] border border-zinc-900 cursor-pointer rounded-lg overflow-hidden group relative before:absolute before:inset-0 before:z-10 before:bg-black before:opacity-50">
         <img
           src={thumnail ? thumnail : "/default-thum.png"}
           alt="Blog Post 1"

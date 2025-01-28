@@ -87,7 +87,7 @@ const HeroSection = () => {
                 grid: { rows: 2 },
               },
             }}
-            className="mySwiper px-10 gap-3"
+            className="mySwiper md:px-10 gap-3"
           >
             {Array.isArray(response) && response.length !== 0 ? (
               response.map((post, index) => (
