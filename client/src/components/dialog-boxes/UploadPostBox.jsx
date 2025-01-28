@@ -74,8 +74,6 @@ const UploadPostBox = ({ Show, setShow }) => {
   };
   */
 
-
-
   return (
     <div
       className={`fixed ${
@@ -175,7 +173,10 @@ const UploadPostBox = ({ Show, setShow }) => {
         <div className="w-full flex justify-end">
           <div
             className="w-[30%] text-center  text-sm py-1.5 px-4 font-medium cursor-pointer text-gray-200 ml-2 bg-gradient-custom rounded-full"
-            onClick={() => createPost(inputs)} // Submit the form
+            onClick={() => {
+              createPost(inputs);
+              setShow(false);
+            }} // Submit the form
           >
             Post
           </div>

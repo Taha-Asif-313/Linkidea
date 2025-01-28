@@ -57,7 +57,7 @@ const HeroSection = () => {
             modules={[Autoplay]}
             autoplay={{
               delay: 10,
-              disableOnInteraction: false,
+              disableOnInteraction: true,
             }}
             speed={2000}
             loop={true}
@@ -78,7 +78,7 @@ const HeroSection = () => {
                 grid: { rows: 2 },
               },
             }}
-            className="mySwiper gap-3"
+            className="mySwiper px-10 gap-3"
           >
             {Array.isArray(response) && response.length !== 0 ? (
               response.map((post, index) => (
