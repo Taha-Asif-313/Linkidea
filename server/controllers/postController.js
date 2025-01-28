@@ -5,13 +5,11 @@ import PostModel from "../models/Postmodel.js";
 export const getAllPosts = async (req, res) => {
   try {
     const allposts = await PostModel.find({}).populate("user", "username");
-  
+
     return res.status(200).json({
       success: true,
       allposts: allposts,
     });
-   
-    
   } catch (error) {
     return res.status(400).json({
       success: false,
@@ -23,7 +21,7 @@ export const getAllPosts = async (req, res) => {
 // Create post
 export const createpost = async (req, res) => {
   try {
-    const { title, content,thumnail } = req.body; // Assuming file is Base64-encoded
+    const { title, content, thumnail } = req.body; // Assuming file is Base64-encoded
     const userId = req.user.id;
 
     // Validate required fields
@@ -55,9 +53,9 @@ export const createpost = async (req, res) => {
     const newPost = new PostModel({
       title,
       content,
-      likes:0,
-      views:0,
-      comments:[],
+      likes: 0,
+      views: 0,
+      comments: [],
       thumnail: thumnail, // Save the filename
       user: user._id,
       username: user.username,
@@ -87,14 +85,14 @@ export const getPostData = async (req, res) => {
     const postId = req.params.id;
     const post = await PostModel.findById(postId).populate("user");
     if (post) {
-      post.views++
+      post.views++;
       post.save();
       return res.status(200).json({
         success: true,
         postdata: post,
-        username:post.user.username,
-        fullname:post.user.fullname,
-        profilepic:post.user.profilePic
+        username: post.user.username,
+        fullname: post.user.fullname,
+        profilepic: post.user.profilePic,
       });
     } else {
       return res.status(400).json({
