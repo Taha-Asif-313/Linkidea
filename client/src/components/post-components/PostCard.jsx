@@ -61,7 +61,7 @@ const PostCard = ({
           class="w-full h-full object-cover object-center group-hover:scale-110 transition-all duration-300"
         />
         <div class="md:p-4 px-3 py-4 absolute bottom-0 left-0 right-0 z-20">
-          <h3 class="text-xl font-bold text-primary">{title}</h3>
+          <h3 class="text-lg font-black leading-tight text-primary">{title}</h3>
           <div class="">
             <p class="text-gray-200 lg:text-sm text-[13px] ">{stcontent}</p>
           </div>

@@ -8,6 +8,7 @@ import "swiper/css/pagination";
 import  PostCard  from "../post-components/PostCard";
 import PostNotFound from "../post-components/PostNotFound";
 import useFetchAllPosts from "../../hooks/useFetchAllPosts";
+import LoadingCircle from "../loading/LoadingCircle";
 
 
 const HeroSection = () => {
@@ -18,6 +19,14 @@ const HeroSection = () => {
   const { response, loading } = useFetchAllPosts(
     `${apiBaseUrl}/api/post/get-all-posts`
   );
+
+  if (loading) {
+    return (
+      <div className="h-screen w-full">
+        <LoadingCircle />
+      </div>
+    );
+  }
   return (
     <>
       <div className="max-w-[1300px] max-lg:w-full max-lg:pt-20 md:px-5 h-screen lg:h-[520px] flex items-center justify-center">

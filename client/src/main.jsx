@@ -10,7 +10,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <Provider store={store}>
     <React.StrictMode>
       <BrowserRouter>
-        <div className="bg-black text-white h-screen max-w-full overflow-x-auto">
+        <div className="bg-black text-white custom-scroll h-screen max-w-full overflow-x-auto">
           <App />
         </div>
       </BrowserRouter>

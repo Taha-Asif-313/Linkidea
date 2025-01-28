@@ -6,3 +6,25 @@
 body {
   font-family: "Noto Sans", sans-serif;
 }
+.custom-scroll {
+  overflow-y: auto;
+}
+
+.custom-scroll {
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #009dff transparent; /* Track and thumb color */
+}
+
+.custom-scroll::-webkit-scrollbar {
+  width: 6px; /* Scrollbar width */
+}
+
+.custom-scroll::-webkit-scrollbar-thumb {
+  background-color: #009dff; /* Thumb color */
+  border-radius: 100px; /* Rounded corners */
+  box-shadow: 0 0 8px #009dff; /* Glowing effect */
+}
+
+.custom-scroll::-webkit-scrollbar-track {
+  background: transparent; /* Track background */
+}

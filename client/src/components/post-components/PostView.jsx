@@ -106,11 +106,11 @@ const PostView = ({
         Show={showAddComment}
         setShow={setshowAddComment}
       />
-      <div className="flex max-h-screen text-white h-screen justify-between gap-5 pt-20 flex-col lg:flex-row lg:mx-24 mx-5 ">
+      <div className="flex text-white min-h-screen justify-between gap-5 pt-20 flex-col lg:flex-row lg:mx-24 mx-5 ">
         {/* Left side a post details */}
-        <div className="md:w-[100%] lg:flex gap-5 w-full max-h-screen">
+        <div className="md:w-[100%] lg:flex gap-5 w-full">
           {/* Post Display Section */}
-          <div className="flex lg:w-[50%] w-full flex-col gap-2 md:max-h-[70%] overflow-y-auto">
+          <div className="flex lg:w-[50%] w-full flex-col gap-2">
             <div className="flex items-center justify-between gap-2">
               <div className="flex items-center gap-2">
                 <img
@@ -156,7 +156,7 @@ const PostView = ({
                 </button>
               </div>
             </div>
-            <div class="max-w-5xl  overflow-hidden">
+            <div class="max-w-5xl">
               <img
                 src={thumnail ? thumnail : "/default-thum.png"}
                 alt="Post 1"
