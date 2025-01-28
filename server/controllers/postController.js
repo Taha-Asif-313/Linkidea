@@ -23,13 +23,8 @@ export const getAllPosts = async (req, res) => {
 // Create post
 export const createpost = async (req, res) => {
   try {
-    const { title, content } = req.body; // Assuming file is Base64-encoded
+    const { title, content,thumnail } = req.body; // Assuming file is Base64-encoded
     const userId = req.user.id;
-    const thumbnail = req.file; // File information from multer
- if(thumbnail){
-  console.log(thumbnail);
- }
-
 
     // Validate required fields
     if (!title || !content) {
@@ -63,7 +58,7 @@ export const createpost = async (req, res) => {
       likes:0,
       views:0,
       comments:[],
-      thumnail: `https://linkidea-server.vercel.app/uploads/${thumbnail?.thumbnail.originalname}`, // Save the filename
+      thumnail: thumnail, // Save the filename
       user: user._id,
       username: user.username,
     });

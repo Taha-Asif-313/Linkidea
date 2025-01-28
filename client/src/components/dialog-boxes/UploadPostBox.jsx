@@ -4,6 +4,7 @@ import useCreatePost from "../../hooks/useCreatePost";
 import LoadingCircle from "../loading/LoadingCircle";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import { storage } from "../../appwrite/appwrite";
 
 const UploadPostBox = ({ Show, setShow }) => {
   const apiBaseUrl = useSelector((state) => state.development.baseApiUrl);
@@ -11,6 +12,7 @@ const UploadPostBox = ({ Show, setShow }) => {
   const [inputs, setinputs] = useState({
     title: "",
     content: "",
+    thumnail: "",
   });
 
   const [file, setfile] = useState();
@@ -25,31 +27,48 @@ const UploadPostBox = ({ Show, setShow }) => {
 
   const fileChangeHandler = (e) => {
     setfile(e.target.files[0]);
-    
   };
 
+  const uploadFileToBucket = async (file) => {
+    try {
+      // Replace 'myBucket' with your bucket ID
+      const bucketId = "6798ab6e000af1a20419";
+
+      // Upload the file
+      const response = await storage.createFile(bucketId, "unique()", file);
+
+      console.log("File uploaded successfully:", response);
+      return response; // Returns the file details
+    } catch (error) {
+      console.error("Error uploading file:", error);
+    }
+  };
 
   const CreatePost = async (e) => {
     e.preventDefault(); // Prevent default form submission behavior
-  
+
     if (loading) return; // Prevent multiple submissions
-  
+
     try {
       // Step 1: Upload the file
+      await uploadFileToBucket(file);
       const formData = new FormData();
       formData.append("title", inputs.title);
       formData.append("content", inputs.content);
       formData.append("file", file);
-  
-      const fileUploadResponse = await axios.post(`${apiBaseUrl}/api/post/create-post`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-        withCredentials: true,
-      });
+
+      const fileUploadResponse = await axios.post(
+        `${apiBaseUrl}/api/post/create-post`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          withCredentials: true,
+        }
+      );
       console.log(fileUploadResponse);
-      
-  
+
       // Reset inputs and states
       setinputs({ title: "", content: "" });
       setShow(!Show);
@@ -57,7 +76,6 @@ const UploadPostBox = ({ Show, setShow }) => {
       console.error("Error in CreatePost:", error);
     }
   };
-  
 
   // Retrun Loading component if loading is true
   if (loading) {
@@ -122,11 +140,14 @@ const UploadPostBox = ({ Show, setShow }) => {
               />
             </svg>
             <p class="text-gray-400 font-semibold text-sm">
-              {
-                file ? file.name : (<>Choose<span class="text-[#007bff]"> image about idea</span> to
-              upload</>)
-              }
-            
+              {file ? (
+                file.name
+              ) : (
+                <>
+                  Choose<span class="text-[#007bff]"> image about idea</span> to
+                  upload
+                </>
+              )}
             </p>
             <input
               onChange={fileChangeHandler}
@@ -137,6 +158,8 @@ const UploadPostBox = ({ Show, setShow }) => {
             <p class="text-xs text-gray-400 mt-2">
               PNG, JPG SVG, and WEBP are Allowed.
             </p>
+            <button onClick={()=>{console.log("click");
+            }}>Upload</button>
           </label>
         </div>
 
