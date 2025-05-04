@@ -106,7 +106,7 @@ const PostView = ({
         Show={showAddComment}
         setShow={setshowAddComment}
       />
-      <div className="flex text-white min-h-screen justify-between gap-5 pt-20 flex-col lg:flex-row lg:mx-24 mx-5 ">
+      <div className="flex min-h-screen justify-between gap-5 py-3 flex-col lg:flex-row lg:mx-24 mx-5 ">
         {/* Left side a post details */}
         <div className="md:w-[100%] lg:flex gap-5 w-full">
           {/* Post Display Section */}
@@ -170,7 +170,7 @@ const PostView = ({
           </div>
 
           {/* Comments display section */}
-          <div class="w-full lg:w-[50%] max-h-screen lg:h-screen overflow-y-auto border-primary text-white">
+          <div class="w-full lg:w-[50%] max-h-screen lg:h-screen overflow-y-auto border-primary">
             <h3 class="font-semibold my-2 lg:text-lg">Comments</h3>
             <div class="flex flex-col gap-5 ">
               {comments.map((comment) => (

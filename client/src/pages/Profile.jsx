@@ -32,7 +32,7 @@ const Profile = () => {
   return (
     <>
       <UploadPostBox Show={show} setShow={setshow} />
-      <section class="relative pb-24">
+      <section class="relative pb-10">
         <div className="relative top-0 left-0 z-0 h-60 w-full">
         
         <div className="w-full h-full bg-gradient-custom rounded-b-xl"></div>
@@ -55,7 +55,7 @@ const Profile = () => {
               <p class="font-normal text-base leading-7 text-primary">
                 @{userData.username}
               </p>
-              <h3 class="font-manrope font-bold text-4xl text-white mb-1">
+              <h3 class="font-manrope font-bold text-4xl mb-1">
                 {userData.fullname}
               </h3>
             </div>
@@ -84,7 +84,7 @@ const Profile = () => {
         </div>
       </section>
       <section className="lg:px-10 px-5">
-        <h2 class="text-white sm:text-4xl text-3xl font-extrabold text-center">
+        <h2 class="sm:text-4xl text-3xl font-extrabold text-center">
           Your Posts
         </h2>
         <div className="blogs w-full h-full flex justify-center gap-5 items-center flex-wrap my-5 min-h-80">

@@ -54,11 +54,15 @@ const RegisterPage = () => {
       <div className="main relative h-screen w-full flex items-center justify-center px-5 ">
         {/* From that use for submit data to backend */}
         <div className="flex justify-center items-center">
-          <div className="p-10 md:border-[1px] border-slate-200 rounded-md flex flex-col items-center space-y-3">
-          <div className="flex items-center justify-center">
-            <img className=" w-16" src="/logo.png" alt="Logo" />
-          </div>
-            <form className="flex flex-col text-white">
+          <div className="p-6 md:border-[1px] border-slate-200 rounded-md flex flex-col items-center space-y-3">
+                {/* Logo */}
+                    <Link to="/" className="flex items-center">
+                      <img src="/logo.png" alt="logo" className="w-8" />
+                      <span className="text-lg font-bold text-gray-800">
+                        Link<span className="text-primary">idea</span>
+                      </span>
+                    </Link>
+            <form className="grid lg:grid-cols-2 gap-2">
               <input
                 className="px-4 py-2 mb-3 text-sm border-primary border-[1px] bg-transparent rounded-full w-80"
                 placeholder="Full Name"
@@ -105,10 +109,15 @@ const RegisterPage = () => {
               >
                 Register
               </button>
-            
-            <div className="text-white text-center text-sm mt-2">
-              <p>Already have account? <Link to={'/login'} className="text-primary">go to login</Link></p>
-            </div>
+
+              <div className=" text-center text-sm mt-2">
+                <p>
+                  Already have account?{" "}
+                  <Link to={"/login"} className="text-primary">
+                    go to login
+                  </Link>
+                </p>
+              </div>
             </div>
           </div>
         </div>

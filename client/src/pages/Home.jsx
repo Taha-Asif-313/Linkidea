@@ -5,7 +5,7 @@ import ExplorePost from "../components/home-page-components/ExplorePost";
 const Home = () => {
   return (
     <>
-      <div className="main flex justify-center items-center h-screen text-white">
+      <div className="main flex justify-center items-center h-screen">
         <HeroSection />
       </div>
     </>
